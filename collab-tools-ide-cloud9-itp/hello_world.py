@@ -1,14 +1,15 @@
-from werkzeug.wrappers import Request, Response
+from flask import Flask
+from flask import request
+app = Flask(__name__)
 
-@Request.application
-def application(request):
-    strAge = request.args['age']
+@app.route('/')
+def index():
+    strAge = request.args.get('age')
     intAge = int(strAge)
     if (intAge > 30):
-        return Response("Kids these days!")
+        return ('Kids these days!')
     else:
-        return Response("Never trust anyone over 30!")
+        return ('Never trust anyone over 30!')
 
 if __name__ == '__main__':
-    from werkzeug.serving import run_simple
-    run_simple('0.0.0.0', 8080, application)
+    app.run(host='0.0.0.0',port='8080')
