@@ -11,9 +11,10 @@ except ImportError as e:
     sys.exit()
 
 try:
-    bearer = os.environ["SPARK_TOKEN"] # Retrieve bot access token
-    bot_url = os.environ["SPARK_BOT_URL"] #Retrieve bot webhook URL
-    authorized_user = os.environ["SPARK_SMS_USER"] #Retrieve the Spark user email authorized to request SMS messages
+    bearer = os.environ["SPARK_TOKEN"] # Spark bot access token
+    bot_url = os.environ["SPARK_BOT_URL"] #Bot application webhook URL
+    authorized_user = os.environ["SPARK_SMS_USER"] #Spark user email authorized to request SMS messages
+    tropo_token = os.environ["TROPO_TOKEN"] #Tropo token for the SMS relay script
 except:
     print("Please configure SPARK_TOKEN, SPARK_BOT_URL, and SPARK_BOT_USER environment variables  \n"
           "Example:  \n"
@@ -22,7 +23,7 @@ except:
           "    SPARK_SMS_USER=your@email.com  \n"
           "    python3 smsbot.py")
     sys.exit()
-    
+
 default_headers = {
     "Accept": "application/json",
     "Content-Type": "application/json; charset=utf-8",
@@ -42,11 +43,11 @@ def send_spark_get(url, payload=None,js=True):
 def send_spark_post(url, data):
     request = requests.post(url, json.dumps(data), headers=default_headers).json()
     return request
-    
+
 def send_spark_delete(url):
     request = requests.delete(url, headers=default_headers)
     return request
-    
+
 def install_webhook():
     old_webhooks = send_spark_get("https://api.ciscospark.com/v1/webhooks", js=True)
     for webhook in old_webhooks["items"]:
@@ -62,33 +63,26 @@ def help_msg():
     return "Sure! I can help. Below are the commands that I understand:  \n" \
            "`/help` - I will display what I can do  \n" \
            "`/hello` - I will display my greeting message  \n" \
-           "`/sms` {number} {the message to send} - Send an SMS.  Target number should begin with `+` and country code, e.g.: `+14055551212`" 
+           "`/sms` {number} {the message to send} - Send an SMS.  Target number should begin with `+` and country code, e.g.: `+14055551212`"
 
 def greetings():
     return "Hi my name is %s.\n  " \
            "Type `/help` to see what I can do.\n  " % bot_name
 
 def sms(phonenumber,msg):
-    # Your code here
-    return
+    url = "https://api.tropo.com/1.0/sessions"
+    querystring = {"action":"create", "token":tropo_token, "phonenumber": phonenumber, "msg":msg}
+    headers = {
+        'accept': "application/json"
+    }
 
-    
-    # url = "https://api.tropo.com/1.0/sessions"
-    # querystring = {"action":"create","token":"6b68755470544c6c4175466b76474d6c4b73634b6153486d6373557043687a76466d4a41724a597959614163","phonenumber":" 14052832164","msg":"hi there2"}
-    # querystring.update( { "phonenumber": phonenumber,"msg":msg} )
-    # headers = {
-    #     'accept': "application/json",
-    #     'cache-control': "no-cache",
-    #     'postman-token': "d4dc5270-219a-c6d0-a664-bbcaabf7b2f1"
-    # }
+    response = requests.request("GET", url, headers=headers, params=querystring)
 
-    # response = requests.request("GET", url, headers=headers, params=querystring)
-    
-    # r = response.text
-    # if r.find("true") > -1:
-    #     return "Message Sent"
-    # else:
-    #     return "Unexpected failure sending message: "+r[r.find("<reason>")+8:r.find("</reason>")]
+    r = response.text
+    if r.find("true") > -1:
+        return "Message Sent"
+    else:
+        return "Unexpected failure sending message: "+r[r.find("<reason>")+8:r.find("</reason>")]
 
 app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
@@ -151,7 +145,7 @@ def main():
         print("You have provided an access token which does not belong to a bot.  \n"
               "Please review it and make sure it belongs to your bot account.")
         sys.exit()
-        
+
     install_webhook()
     app.run(host='0.0.0.0', port=8080)
 
