@@ -2,14 +2,15 @@ from pprint import pprint
 import requests
 import json
 import sys
+import subprocess
+import os
 try:
     from flask import Flask
     from flask import request
-except ImportError as e:
-    print(e)
-    print("Looks like 'flask' library is missing.\n"
-          "Type 'pip3 install flask' command to install the missing library.")
-    sys.exit()
+except ImportError:
+    flask_install=subprocess.check_output(["sudo pip3 install Flask"], shell=True)
+    from flask import Flask
+    from flask import request
 
 
 bearer = "" # BOT'S ACCESS TOKEN
@@ -127,7 +128,9 @@ def main():
               "URL and generate a new access token.")
         sys.exit()
     else:
-        app.run(host='localhost', port=8080)
+        port = int(os.environ.get("PORT", 8080))
+        ip = str(os.environ.get("IP", "0.0.0.0"))
+        app.run(host=ip, port=port)
 
 if __name__ == "__main__":
     main()
