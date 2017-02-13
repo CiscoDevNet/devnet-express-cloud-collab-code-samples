@@ -54,7 +54,7 @@ def greetings():
 app = Flask(__name__)
 
 
-@app.route('/ban/this/guy', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def spark_webhook():
     if request.method == 'POST':
         webhook = request.get_json(silent=True)
