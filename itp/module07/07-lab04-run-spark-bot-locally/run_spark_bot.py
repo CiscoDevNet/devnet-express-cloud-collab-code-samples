@@ -109,7 +109,6 @@ def main():
                   "URL and generate a new access token.")
             sys.exit()
         if test_auth.status_code == 200:
-            print(test_auth.text)
             test_auth = test_auth.json()
             bot_name = test_auth.get("displayName", "").split()[0]
             bot_email = test_auth.get("emails","")[0]
