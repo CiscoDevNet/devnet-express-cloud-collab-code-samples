@@ -129,7 +129,7 @@ def main():
               "URL and generate a new access token.")
         sys.exit()
     else:
-        app.run(host='localhost')
+        app.run(host='localhost', port=8080)
 
 if __name__ == "__main__":
     main()
