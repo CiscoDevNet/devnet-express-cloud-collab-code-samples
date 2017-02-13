@@ -20,7 +20,7 @@ headers = {
 }
 
 
-def send_spark_get(url, payload=None,js=True):
+def send_spark_get(url, payload=None, js=True):
 
     if payload == None:
         request = requests.get(url, headers=headers)
@@ -80,7 +80,7 @@ def spark_webhook():
             elif in_message.startswith('hello'):
                 msg = greetings()
             elif in_message.startswith("repeat after me"):
-                message = in_message.split('repeat after me ')[1]
+                message = in_message.split('repeat after me')[1]
                 if len(message) > 0:
                     msg = "{0}".format(message)
                 else:
@@ -96,6 +96,7 @@ def spark_webhook():
                   "<center><h2><b>Congratulations! Your <i style=\"color:#ff8000;\">%s</i> bot is up and running.</b></h2></center>" \
                   "<center><b><i>Please don't forget to create Webhooks to start receiving events from Cisco Spark!</i></b></center>" % bot_name
         return message
+
 
 def main():
     global bot_email, bot_name
