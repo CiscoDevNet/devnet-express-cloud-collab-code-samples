@@ -64,7 +64,7 @@ def get_membership(room, email):
 
     print(get_mem_resp)
 
-    if str(get_mem_resp) != "<Response [200]>" or json.loads(get_mem_resp.text)["items"] == []:
+    if get_mem_resp.status_code != 200 or json.loads(get_mem_resp.text)["items"] == []:
         get_mem_id = None
 
     else:
@@ -110,7 +110,7 @@ def ban_hook():
         else:
             banned_for_life = rock_ban(mem_id)
 
-            if str(banned_for_life) == "<Response [204]>":
+            if banned_for_life.status_code == 204:
                 print("We banned that jerk %s" % mess_list[2])
             else:
                 print("I don't think we banned them, well this is embarrassing...")
