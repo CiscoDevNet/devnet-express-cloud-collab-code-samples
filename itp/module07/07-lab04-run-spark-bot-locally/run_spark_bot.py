@@ -12,7 +12,7 @@ except ImportError as e:
     sys.exit()
 
 
-bearer = ""  # BOT'S ACCESS TOKEN
+bearer = ""  #  BOT'S ACCESS TOKEN
 headers = {
     "Accept": "application/json",
     "Content-Type": "application/json; charset=utf-8",
