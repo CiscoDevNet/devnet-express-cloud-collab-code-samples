@@ -12,7 +12,7 @@ except ImportError as e:
     sys.exit()
 
 
-bearer = "" # BOT'S ACCESS TOKEN
+bearer = "ZThhNmZhMDktODEwZS00MzViLWE1M2QtNzc5NDAxOWNjOGNlODMwOGZlZjQtZjBh"  # BOT'S ACCESS TOKEN
 headers = {
     "Accept": "application/json",
     "Content-Type": "application/json; charset=utf-8",
@@ -51,13 +51,14 @@ def greetings():
            "Type `Help me` to see what I can do.<br/>" % bot_name
 
 
-
 app = Flask(__name__)
-@app.route('/', methods=['GET', 'POST'])
+
+
+@app.route('/ban/this/guy', methods=['GET', 'POST'])
 def spark_webhook():
     if request.method == 'POST':
         webhook = request.get_json(silent=True)
-        if webhook['data']['personEmail']!= bot_email:
+        if webhook['data']['personEmail'] != bot_email:
             pprint(webhook)
         if webhook['resource'] == "memberships" and webhook['data']['personEmail'] == bot_email:
             send_spark_post("https://api.ciscospark.com/v1/messages",
@@ -73,7 +74,7 @@ def spark_webhook():
             result = send_spark_get(
                 'https://api.ciscospark.com/v1/messages/{0}'.format(webhook['data']['id']))
             in_message = result.get('text', '').lower()
-            in_message = in_message.replace(bot_name.lower() + " ", '')
+            in_message = in_message.replace(bot_name.lower() + " ", "")
             if in_message.startswith('help me'):
                 msg = help_me()
             elif in_message.startswith('hello'):
@@ -108,8 +109,9 @@ def main():
                   "URL and generate a new access token.")
             sys.exit()
         if test_auth.status_code == 200:
+            print(test_auth.text)
             test_auth = test_auth.json()
-            bot_name = test_auth.get("displayName","")
+            bot_name = test_auth.get("displayName", "").split()[0]
             bot_email = test_auth.get("emails","")[0]
     else:
         print("'bearer' variable is empty! \n"
@@ -127,7 +129,7 @@ def main():
               "URL and generate a new access token.")
         sys.exit()
     else:
-        app.run(host='localhost', port=8080)
+        app.run(host='localhost')
 
 if __name__ == "__main__":
     main()
