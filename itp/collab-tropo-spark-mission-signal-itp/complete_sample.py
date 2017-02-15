@@ -1,18 +1,3 @@
-
-Skip to content
-
-    All gists
-    GitHub
-
-    New gist
-
-    0
-
-@dstaudt dstaudt/testScript.py Secret
-Last active 11 minutes ago
-Code
-Revisions 13
-testScript.py
 import urllib2
 import json
 
@@ -101,13 +86,3 @@ if currentCall:
     wait(1000)
 else:
     chatops("tropo script version: DATE TIME")
-@dstaudt
-
-Attach files by dragging & dropping,
-
-, or pasting from the clipboard.
-Styling with Markdown is supported
-
-    Contact GitHub API Training Shop Blog About
-
-    © 2017 GitHub, Inc. Terms Privacy Security Status Help
