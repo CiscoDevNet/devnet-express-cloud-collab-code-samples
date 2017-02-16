@@ -12,7 +12,7 @@ except ImportError as e:
     sys.exit()
 
 
-bearer = ""  #  BOT'S ACCESS TOKEN
+bearer = "" # BOT'S ACCESS TOKEN
 headers = {
     "Accept": "application/json",
     "Content-Type": "application/json; charset=utf-8",
@@ -20,7 +20,7 @@ headers = {
 }
 
 
-def send_spark_get(url, payload=None, js=True):
+def send_spark_get(url, payload=None,js=True):
 
     if payload == None:
         request = requests.get(url, headers=headers)
@@ -51,14 +51,13 @@ def greetings():
            "Type `Help me` to see what I can do.<br/>" % bot_name
 
 
+
 app = Flask(__name__)
-
-
 @app.route('/', methods=['GET', 'POST'])
 def spark_webhook():
     if request.method == 'POST':
         webhook = request.get_json(silent=True)
-        if webhook['data']['personEmail'] != bot_email:
+        if webhook['data']['personEmail']!= bot_email:
             pprint(webhook)
         if webhook['resource'] == "memberships" and webhook['data']['personEmail'] == bot_email:
             send_spark_post("https://api.ciscospark.com/v1/messages",
@@ -74,13 +73,13 @@ def spark_webhook():
             result = send_spark_get(
                 'https://api.ciscospark.com/v1/messages/{0}'.format(webhook['data']['id']))
             in_message = result.get('text', '').lower()
-            in_message = in_message.replace(bot_name.lower() + " ", "")
+            in_message = in_message.replace(bot_name.lower() + " ", '')
             if in_message.startswith('help me'):
                 msg = help_me()
             elif in_message.startswith('hello'):
                 msg = greetings()
             elif in_message.startswith("repeat after me"):
-                message = in_message.split('repeat after me')[1]
+                message = in_message.split('repeat after me ')[1]
                 if len(message) > 0:
                     msg = "{0}".format(message)
                 else:
@@ -97,7 +96,6 @@ def spark_webhook():
                   "<center><b><i>Please don't forget to create Webhooks to start receiving events from Cisco Spark!</i></b></center>" % bot_name
         return message
 
-
 def main():
     global bot_email, bot_name
     if len(bearer) != 0:
@@ -111,7 +109,7 @@ def main():
             sys.exit()
         if test_auth.status_code == 200:
             test_auth = test_auth.json()
-            bot_name = test_auth.get("displayName", "").split()[0]
+            bot_name = test_auth.get("displayName","")
             bot_email = test_auth.get("emails","")[0]
     else:
         print("'bearer' variable is empty! \n"
