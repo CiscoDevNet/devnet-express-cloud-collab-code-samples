@@ -69,7 +69,7 @@ def spark_webhook():
                             }
                             )
         msg = None
-        if webhook['data']['personEmail'] != bot_email:
+        if "@sparkbot.io" not in webhook['data']['personEmail']:
             result = send_spark_get(
                 'https://api.ciscospark.com/v1/messages/{0}'.format(webhook['data']['id']))
             in_message = result.get('text', '').lower()
