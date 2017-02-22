@@ -11,17 +11,19 @@ except ImportError as e:
     sys.exit()
 
 try:
-    bearer = os.environ["SPARK_TOKEN"] # Retrieve bot access token
-    bot_url = os.environ["SPARK_BOT_URL"] #Retrieve bot webhook URL
-    authorized_user = os.environ["SPARK_SMS_USER"] #Retrieve the Spark user email authorized to request SMS messages
-except:
-    print("Please configure SPARK_TOKEN, SPARK_BOT_URL, and SPARK_BOT_USER environment variables  \n"
+    bearer = os.environ["SPARK_TOKEN"] # Spark bot access token
+    bot_url = os.environ["SPARK_BOT_URL"] #Bot application webhook URL
+    authorized_user = os.environ["SPARK_SMS_USER"] #Spark user email authorized to request SMS messages
+    tropo_token = os.environ["TROPO_TOKEN"] #Tropo token for the SMS relay script
+except KeyError as e:
+    print("%s environment variable is missing." % e)
+    print("Please configure SPARK_TOKEN, SPARK_BOT_URL, and SPARK_BOT_USER, TROPO_TOKEN environment variables  \n"
           "Example:  \n"
           "    SPARK_TOKEN={your_bot_token}  \n"
           "    SPARK_BOT_URL=https://app.example.com  \n"
           "    SPARK_SMS_USER=your@email.com  \n"
+          "    TROPO_TOKEN={your-tropo-applications-messaging-token}"
           "    python3 smsbot.py")
-    sys.exit()
 
 default_headers = {
     "Accept": "application/json",
@@ -85,7 +87,7 @@ def spark_webhook():
                             }
                             )
         out_message = None
-        if webhook['data']['personEmail'] != bot_email:
+        if "@sparkbot.io" not in webhook['data']['personEmail']:
             result = send_spark_get(
                 'https://api.ciscospark.com/v1/messages/{0}'.format(webhook['data']['id']))
             in_message = result.get('text', '').lower()
