@@ -6,23 +6,11 @@ import os
 import getopt
 
 
-# Simple Bot Function for passing messages to a room
-def spark_it(token, room_id, message):
-
-        header = {"Authorization": "Bearer %s" % token,
-                  "Content-Type": "application/json"}
-
-        data = {"roomId": room_id,
-                "text": message}
-
-        return requests.post("https://api.ciscospark.com/v1/messages/", headers=header, data=json.dumps(data), verify=True)
-
-
 if __name__ == '__main__':
 
         # Command line arguments parsing    
         from argparse import ArgumentParser  
-        parser = ArgumentParser("chatops.py")  
+        parser = ArgumentParser("ciscospark.py")  
         parser.add_argument("-m", "--message", help="the chatops message to post to Cisco Spark", required=True)
         parser.add_argument("-r", "--room_id", help="the identifier of the Cisco Spark room you added your bot to", required=True)
         parser.add_argument("-t", "--token", help="[optional] your bot's access token. Alternatively, you can use the SPARK_ACCESS_TOKEN env variable", required=False)
@@ -43,15 +31,19 @@ if __name__ == '__main__':
             sys.exit(2)
 
         # Now let's post our message to Cisco spark
-        res = spark_it(token, spark_room, str(dt.datetime.now()) + "\n" + message)
-        if res.status_code == 200:
+        from ciscosparkapi import CiscoSparkAPI, SparkApiError
+        try:
+                api = CiscoSparkAPI(access_token=token)  
+                api.messages.create(roomId = spark_room, text= str(dt.datetime.now()) + "\n" + message)
                 print("your message was successfully posted to Cisco Spark")
-        else:
-                print("failed with statusCode: %d" % res.status_code)
-                if res.status_code == 404:
+        except SparkApiError as e:
+                print("failed with statusCode: %d" % e.response_code)
+                if e.response_code == 404:
                         print ("please check the bot is in the Cisco Spark room you're attempting to post to...")
-                elif res.status_code == 400:
+                elif e.response_code == 400:
                         print ("please check the identifier of the Room you're attempting to post to...")
-                elif res.status_code == 401:
-                        print ("please check if the Cisco Spark token is correct...")
+                elif e.response_code == 401:
+                        print ("please check the Cisco Spark token is correct...")
+
+                
 

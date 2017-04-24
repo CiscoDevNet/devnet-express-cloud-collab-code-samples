@@ -1,14 +1,13 @@
 {
     "version": "0.2.0",
     "configurations": [
-
         {
             "name": "ChatOps",
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
             "pythonPath": "${config.python.pythonPath}",
-            "program": "${workspaceRoot}/chatops.py",
+            "program": "${file}",
             "cwd": "${workspaceRoot}",
             "debugOptions": [
                 "WaitOnAbnormalExit",
