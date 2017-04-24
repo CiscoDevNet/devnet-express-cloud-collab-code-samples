@@ -3,7 +3,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello World!"
+    message = "Welcome to DevNet Express"
+    return message
 
 if __name__ == "__main__":
-    app.run()
+    import os
+    default = os.getenv('PORT', 5000)
+    app.run(port=default)
