@@ -91,6 +91,6 @@ const ciscospark = require(`ciscospark`);
 function chatops(message) {
   ciscospark.messages.create({
     markdown: message,
-    roomId: "Y2lzY29zcGFyazovL3VzL1JPT00vOWJmYmY4YzAtZTdkOS0xMWU2LTliNzItNjUzMGVjZDljNTIz"
+    roomId: "PASTE_YOUR_ROOM_IDENTIFIER"
   });
 }
