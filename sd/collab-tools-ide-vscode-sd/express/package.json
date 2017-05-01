@@ -2,9 +2,9 @@
   "name": "express-samples",
   "version": "0.1.0",
   "description": "",
-  "main": "express-v6-style.js",
+  "main": "express-ES6-style.js",
   "scripts": {
-    "start": "node express-v6-style.js",
+    "start": "node express-ES6-style.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Stève Sfartz",
