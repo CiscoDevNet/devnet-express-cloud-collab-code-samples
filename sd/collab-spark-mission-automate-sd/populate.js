@@ -15,7 +15,7 @@ var parser = parse({ delimiter: ';', columns: true }, function (err, data) {
   // Append participants to the room
   var roomToPopulate = "PASTE_YOUR_ROOMID";
   data.forEach(function (elem, index) {
-    if (elem.firstname !== "EOF") {
+    if (elem.email) {
 
       ciscospark.memberships.create({
         roomId: roomToPopulate,
