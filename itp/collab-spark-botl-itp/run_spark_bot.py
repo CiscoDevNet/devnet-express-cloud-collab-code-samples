@@ -2,6 +2,7 @@ from pprint import pprint
 import requests
 import json
 import sys
+import os
 try:
     from flask import Flask
     from flask import request
@@ -12,7 +13,7 @@ except ImportError as e:
     sys.exit()
 
 
-bearer = "" # BOT'S ACCESS TOKEN
+bearer = os.environ.get("SPARK_ACCESS_TOKEN") # BOT'S ACCESS TOKEN
 headers = {
     "Accept": "application/json",
     "Content-Type": "application/json; charset=utf-8",
