@@ -28,9 +28,9 @@ def get_message(data):
 
     mess_resp = requests.get(mess_url, headers=headers)
 
-    mess_content = mess_resp.text['text']
+    mess_content = json.loads(mess_resp.text)['text']
 
-    mess_room = mess_resp.text['roomId']
+    mess_room = json.loads(mess_resp.text)['roomId']
 
     return mess_room, mess_content
 
@@ -55,7 +55,7 @@ def get_membership(room, email):
     get_mem_api = "/memberships"
 
     get_mem_param = {"roomId": room,
-                     "personEmail": YourEmail
+                     "personEmail": email
                      }
 
     get_mem_url = baseurl + get_mem_api
@@ -80,7 +80,7 @@ def rock_ban(mem_id):
 
     ban_url = baseurl + del_mem_api
 
-    ban_resp = requests.post(ban_url, headers=headers)
+    ban_resp = requests.delete(ban_url, headers=headers)
 
     return ban_resp
 
