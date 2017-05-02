@@ -10,10 +10,10 @@ except ImportError as e:
     print("Looks like the 'flask' library is missing.  Unable to start.")
     sys.exit()
 
-bearer = "" # Spark bot access token
-bot_url = "" #Bot application webhook URL
-authorized_user = "" #Spark user email authorized to request SMS messages
-tropo_token = "" #Tropo token for the SMS relay script
+bearer = os.environ.get("SPARK_ACCESS_TOKEN")  # Spark bot access token
+bot_url = os.environ.get("BOT_URL")  #Bot application webhook URL
+authorized_user = os.environ.get("AUTHORIZED_USER")  #Spark user email authorized to request SMS messages
+tropo_token = os.environ.get("TROPO_TOKEN")  #Tropo token for the SMS relay script
 
 default_headers = {
     "Accept": "application/json",

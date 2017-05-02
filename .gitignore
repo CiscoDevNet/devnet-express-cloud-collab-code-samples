@@ -42,3 +42,4 @@ jspm_packages
 
 #VSCode launch configs
 itp/collab-spark-botl-itp/.vscode/launch.json
+itp/collab-spark-bot-mission-itp/.vscode/launch.json
