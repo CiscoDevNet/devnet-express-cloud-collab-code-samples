@@ -10,10 +10,10 @@
             "program": "${file}",
             "cwd": "${workspaceRoot}",
             "env": {
-                "SPARK_TOKEN": "MWI0MmFiYzYtYjc0OS00NjJjLWFlMDQtYjkxNTFjMzFhYTk2NzFiNmYzMzEtMTRl",
-                "SPARK_BOT_URL": "http://626e6cc1.ngrok.io",
-                "SPARK_SMS_USER": "dstaudt@cisco.com",
-                "TROPO_TOKEN": "6b5356575063626a46484946584c68596c566453647168536d634767474e4c48547a5373594f57494b635a68"
+                "SPARK_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE",
+                "SPARK_BOT_URL": "PASTE YOUR NGROK URL HERE",
+                "SPARK_SMS_USER": "PASTE YOUR SPARK SMS USER EMAIL HERE",
+                "TROPO_TOKEN": "PASTE YOUR TROPO SCRIPT TOKEN HERE"
             },
             "debugOptions": [
                 "WaitOnAbnormalExit",
