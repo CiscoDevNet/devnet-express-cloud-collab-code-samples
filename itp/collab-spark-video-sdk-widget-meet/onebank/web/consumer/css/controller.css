@@ -1,0 +1,70 @@
+
+body {
+    background: #000;
+}
+
+#title {
+    display: block;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    color: #fff;
+    text-align: center;
+    line-height: 2em;
+}
+
+#logo {
+    margin-top: 10px;
+    background-image: url('../assets/assist64.png');
+    background-repeat: no-repeat;
+    width: 64px;
+    height: 64px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#status {
+    display: block;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    height: 24px;
+    color: #fff;
+    padding-left: 5px;
+    text-align: center;
+}
+
+#webcamStatus {
+    text-align: center;
+}
+
+#webcamStatus .requested {
+    display: none;
+}
+
+#webcamStatus.assist_webcam_requested .requested {
+    display: initial !important;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 14px;
+    color: white;
+}
+
+#content {
+    width: 300px;
+    height: 150px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+}
+
+#content.assist_with_webcam_request {
+    width: 300px;
+    height: 200px;
+}

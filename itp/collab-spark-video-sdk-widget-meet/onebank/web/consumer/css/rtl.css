@@ -1,0 +1,58 @@
+#assist-sdk *, #content.assist_controller * {
+    direction: rtl;
+}
+
+#assist-sdk {
+    left: initial;
+    right: 20px;
+}
+
+#assist-support-rejected-modal, #assist-support-rejected-modal div, #assist-support-rejected-modal p {
+    left:initial;
+    right: 0; 
+}
+
+.with-video #video, .without-video #video {
+    left: initial;
+    right: 9px;
+}
+ 
+.with-video #mute-button, .audio-only  #mute-button {
+    left: initial;
+    right: 15px;
+}
+
+.with-video #end-button, .audio-only  #end-button {
+    right: initial;
+    left: 15px;
+}
+
+.without-audio #end-button {
+    left: initial;
+    right: 82px;
+}
+
+.with-video #name-div, #status-div {
+    left: initial;
+    right: 5px;
+}
+
+#agent-info-div {
+    left: initial;
+    right: 154px;
+}
+
+.with-video #call-quality-indicator {
+    left: initial;
+    right: 250px;
+}
+
+.without-video #call-quality-indicator {
+    left: initial;
+    right: 115px;
+}
+
+#status {
+    padding-left: initial;
+    padding-right: 5px;
+}

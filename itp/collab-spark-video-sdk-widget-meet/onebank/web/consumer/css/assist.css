@@ -1,0 +1,326 @@
+
+ #assist-support-rejected-modal {
+ 	position: fixed;
+ 	width: 100%;
+ 	height: 100%;
+ 	top: 0;
+ 	left: 0;
+ }
+ 
+ #assist-support-rejected-modal div {
+ 	width: 100%;
+ 	height: 100%;
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	background-color: black;
+ 	opacity: 0.8;
+ 	z-index: 9998;
+ }
+
+#assist-support-rejected-modal p {
+	font-family: Helvetica, Arial;
+	font-size: large;
+	color: white;
+	padding: 10px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	z-index: 9999;
+	position: absolute;
+	text-align: center;
+	display: block;
+	width: 40%;
+	height: 10%;
+}
+
+#assist-support-rejected-modal input {
+	display: block;
+	margin: 0 auto;
+	margin-top: 5px;
+}
+
+#glass-pane {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 9999;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+#previewContainer {
+	position: fixed;
+	z-index: 10000;
+	pointer-events: all;
+}
+
+#previewContainer:hover .handle:not(:hover) {
+    opacity: 0.8;
+}
+
+#preview {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	border: 2px solid #333333;
+}
+
+#snapshot-button {
+	pointer-events: all;
+	background-repeat: no-repeat;
+	background-image: url("../assets/snapshot_button.png");
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	right: 5px;
+	top: calc(50% - 35px);
+	z-index: 10001;
+}
+
+#assist-sdk {
+	z-index: 9998;
+	position: fixed;
+	font-family: arial, helvetica, sans-serif;
+	color: #fff;
+	border-radius: 15px;
+    pointer-events: all;
+    top: 20px;
+    left: 20px;
+    text-decoration:initial;
+    text-align:initial;
+    font-weight:normal;
+    font-size: initial;
+}
+
+#assist-sdk .move-handle {
+    background: none;
+    border: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#assist-sdk .button {
+    z-index: 2;
+}
+
+#assist-sdk.with-video {
+	width: 300px;
+	height: 269px;
+	background-image: url('../assets/assist_background.png');
+}
+
+#assist-sdk.without-video {
+	width: 308px;
+	height: 200px;
+	background-image: url('../assets/Agent_Vignette_background_black.png');
+    display: none;
+}
+
+#video {
+	position: absolute;
+	autoplay: true;
+}
+
+.with-video #video {	
+	width: 279px;
+	height: 210px;
+	top: 12px;
+	left: 12px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	overflow: hidden;
+}
+
+/* Include the video element when video is not being shown so that we can get audio */
+.without-video #video {
+	width: 279px;
+	height: 214px;
+	top: 10px;
+	left: 12px;
+	visibility: hidden;
+}
+
+#mute-button {
+	cursor: pointer;
+	width: 62px;
+	height: 32px;
+	position: absolute;
+	background-repeat: no-repeat;
+}
+
+#mute-button.unmuted {
+	background-image: url("../assets/mute_button.png");
+}
+
+#mute-button.muted {
+	background-image: url("../assets/unmute_button.png");
+}
+
+.with-video #mute-button {
+	left: 15px;
+	top: 15px;
+}
+
+.audio-only  #mute-button {
+	left: 15px;
+	top: 158px;
+}
+
+#camera-button {
+	cursor: pointer;
+	width: 62px;
+	height: 32px;
+	left: 15px;
+	top: 53px;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-image: url("../assets/camera_button.png");
+}
+
+#menu-button {
+	cursor: pointer;
+	width: 62px;
+	height: 32px;
+	left: 15px;
+	top: 224px;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-image: url("../assets/menu_button.png");
+}
+
+#menu {
+	width: 91px;
+	height: 135px;
+	left: 3px;
+	top: 92px;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-image: url("../assets/menu_background.png");
+}
+
+#end-button {
+	cursor: pointer;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-image: url("../assets/end_button.png");
+}
+
+.with-video #end-button {
+	right: 15px;
+	top: 224px;
+	width: 62px;
+	height: 32px;
+}
+
+.audio-only  #end-button {
+	right: 15px;
+	top: 158px;
+	width: 62px;
+	height: 32px;
+}
+
+.without-audio #end-button {
+	left: 82px;
+	top: 159px;
+	width: 137px;
+	height: 31px;
+    background-image: url("../assets/Agent_Vignette_button.png");
+}
+
+#name-div {
+	text-align: center;
+	position: absolute;
+}
+
+.with-video #name-div {
+	width: 290px;
+	height: 30px;
+	left: 5px;
+	top: 231px;
+}
+
+.without-video #name-div {
+	top: 18px;
+	width: 100%;
+	color: #A0A0A0;
+	font-size: 13pt;
+}
+
+#status-div {
+	width: 290px;
+	height: 30px;
+	position: absolute;
+	left: 5px;
+	top: 115px;
+}
+
+/* agent's photo or avatar */
+#picture {
+    display: block;
+    margin: auto auto;
+    max-width: 80%;
+	height: 145px;
+	position: relative;
+	top: 10px;
+}
+
+#agent-info-div {
+	position: absolute;
+	left: 154px;
+	top: 8px;
+	width: 147px;
+	height: 147px;
+}
+
+#tagline-div {
+	position: absolute;
+	top: 58px;
+	width: 100%;
+	text-align: center;
+	color: #A0A0A0;
+	font-size: 11pt;
+}
+
+#call-quality-indicator {
+	width: 35px;
+	height: 25px;
+	z-index: 1001;
+	position: absolute;
+	background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.with-video #call-quality-indicator {
+	left: 250px;
+	top: 18px;
+}
+
+.without-video #call-quality-indicator {
+	left: 115px;
+	top: 12px;
+}
+
+#call-quality-indicator.call-quality-good {
+    background-image: url("../../shared/assets/network-green.png");
+}
+
+#call-quality-indicator.call-quality-moderate {
+    background-image: url("../../shared/assets/network-yellow.png");
+}
+
+#call-quality-indicator.call-quality-poor {
+    background-image: url("../../shared/assets/network-red.png");
+}
+
+#call-quality-indicator.no-call {
+    display : none;
+}

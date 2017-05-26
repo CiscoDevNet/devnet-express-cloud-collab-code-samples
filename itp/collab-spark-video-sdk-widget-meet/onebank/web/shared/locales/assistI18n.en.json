@@ -1,0 +1,51 @@
+{
+    "popup": {
+        "pageTitle":"Live Assist",
+        "title":"Fusion Live Assist",
+        "acceptWebcam":"Please allow LiveAssist to access your webcam by clicking 'Allow' above.",
+        "status": {
+            "waiting":"Waiting...",
+            "connecting":"Connecting...",
+            "connected":"Connected"
+        }
+    },
+    "button": {
+        "ok":"OK",
+        "mute":"Mute",
+        "unmute":"Unmute",
+        "end":"End"
+    },
+    "notice": {
+        "noAgents":"There are currently no agents available. Please try again.",
+        "navigateAwayAssist":"You have gone to a page without Live Assist. Your video and voice are still being transmitted to the Live Assist agent while this window is open.",
+        "callFailed":"Failed to establish call.",
+        "promptToAllowScreenShare":"Would you like to enable sharing of your current browser window?"
+    },
+    "error": {
+        "noWebRTC":"Sorry, your browser does not appear to support WebRTC.",
+        "popupBlocked":"Your browser has blocked a pop-up window required for Live Assist to work. Please allow pop-ups from this site, and reload this page.",
+        "shareFail": {
+            "targetType": {
+                "image":"An image",
+                "document":"A document"
+            },
+            "error":"Error: __error__",
+            "message":"__targetType__ that the agent has attempted to share with you has failed to load."
+        }
+    },
+    "agent": {
+        "navigateAwayAssist":"The user has left the Live Assist pages. The user's screen is not being shared.",
+        "incoming":"Incoming call from __caller__, answer?",
+        "forms": {
+            "keepExisting_title":"Keep the existing value.",
+            "keepExisting_symbol":"<<",
+            "submit":"Populate form"
+        },
+        "alerts": {
+            "docPushToUnsupportedPage" : "You cannot push documents if the consumer is not on an Assist enabled page."
+        }
+    },
+    "shared": {
+        "formattedPercent" : "__number__%"
+    }
+}

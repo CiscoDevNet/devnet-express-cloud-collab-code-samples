@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base href="../" >
+<script id="lang">var lang = "en";</script>
+<link id="Assist-popup-CSS" rel="stylesheet" href="css/controller.css"/>
+<script src="js/utils.js"></script>
+<!-- <script>
+// if (typeof lang !== "undefined" && lang !== null && AssistUtils.isRTL(lang)) {
+//     AssistUtils.loadCSS(AssistSDK.sourceWindow.document, "css/rtl.css");
+// }
+</script> -->
+<title data-i18n="assistI18n:popup.pageTitle"></title>
+</head>
+
+<body>
+<div id="content" class="assist_controller">
+<div id='webcamStatus'><div class="requested" data-i18n="popup.acceptWebcam"></div></div>
+<div id="logo"></div>
+<div id="title" data-i18n="assistI18n:popup.title"></div>
+<div id="status" data-i18n="assistI18n:popup.status.waiting"></div>
+</div>
+<!-- thirdparty -->
+<script src="js/thirdparty/jquery.min.js"></script>
+<script src="../shared/js/thirdparty/compatibility.js"></script>
+<script src="../shared/js/thirdparty/pdf.js"></script>
+<script src="js/thirdparty/html2canvas.js"></script>
+<script src="../shared/js/thirdparty/i18next-1.7.4.min.js"></script>
+
+<!--  assist modules -->
+<script src="js/config.js"></script>
+<script src="js/assist-fcsdk.js"></script>
+<script src="../shared/js/assist-aed.js"></script>
+<script src="../shared/js/shared-windows.js"></script>
+
+<!-- main -->
+<script src="js/assist-controller.js"></script>
+
+<!-- bootstrap -->
+<script>
+i18n.init({debug:true,ns:{namespaces:['assistI18n']},useCookie: false, lng:lang, fallbackLng: 'en', resGetPath: '../shared/locales/__ns__.__lng__.json'},
+    function(t){
+        $("html").i18n();
+        AssistSDK.startSupport();
+    });
+</script>
+
+</body>
+</html>
+

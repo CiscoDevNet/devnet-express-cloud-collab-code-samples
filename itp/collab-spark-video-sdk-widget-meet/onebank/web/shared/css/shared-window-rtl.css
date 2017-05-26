@@ -1,0 +1,45 @@
+.move-handle {
+    left: initial;
+    right: -24px;
+}
+
+.close-handle {
+    right: initial;
+    left: -24px;
+}
+
+.zoom-in-handle {
+    left: initial;
+    right: 0px;
+}
+
+.zoom-out-handle {
+    left: initial;
+    right: 24px;
+}
+
+/** Leave this as-is in LTR for the moment as it's coded to resize from bottom-right corner. Hopefully fix in future. */
+/* .resize-handle { */
+/*     right: initial; */
+/*     left: -24px; */
+/* } */
+
+.zoom-indicator {
+    left: initial;
+    right: 48px;
+}
+
+.input-location {
+    left: initial;
+    right: 0;
+}
+
+.non-interactive .move-handle {
+    left: initial;
+	right: 0px;
+}
+
+.scrollbar {
+    right: initial;
+    left:0;
+}

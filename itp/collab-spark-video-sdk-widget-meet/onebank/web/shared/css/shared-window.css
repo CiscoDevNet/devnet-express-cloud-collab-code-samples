@@ -1,0 +1,267 @@
+.remote-view-element {
+    position: absolute;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.child-shared-div {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    z-index: 9;
+}
+
+.annotation-layer {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 9999;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+}
+
+.spotlight-layer {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 9999;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+}
+
+.spotlight-layer circle {
+    opacity: 0;
+    /* Chrome, Opera, etc. */
+    -webkit-animation-duration: .3s;
+    -webkit-animation-name: ripple;
+    -webkit-animation-iteration-count: 5;
+    /* Standard */
+    animation-duration: .3s;
+    animation-name: ripple;
+    animation-iteration-count: 5;
+}
+
+/* Chrome, Opera, etc. */
+@-webkit-keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.8;
+    }
+	
+	50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(20);
+        opacity: 0;
+    }
+}
+
+/* Standard */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.8;
+    }
+	
+	50% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(20);
+        opacity: 0;
+    }
+}
+
+.stay-on-top {
+    z-index: 10;
+}
+
+.annotation-layer.active {
+    pointer-events: all;
+    cursor: url(../assets/pencil_cursor.png) 2 25, auto
+}
+
+.spotlight-layer.active {
+    pointer-events: all;
+    cursor: url(../assets/spotlight_cursor.png) 10 10, auto
+}
+
+.interactive.active {
+    cursor: pointer;
+}
+
+.non-interactive {
+    pointer-events: none;
+}
+
+.shared-window {
+    pointer-events: none;
+}
+
+.shared-window.active {
+    pointer-events: all;
+}
+
+.drawing-layer {
+    z-index: 2;
+    pointer-events: none;
+}
+
+.handle {
+    pointer-events: all;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0.4;
+    z-index: 9999;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: lightgray;
+    margin-top:0;
+}
+.move-handle {
+    top: -24px;
+    left: -24px;
+    cursor: move;
+    background-image: url("../assets/move.svg");
+}
+
+.moveable:hover .handle:not(:hover) {
+    opacity: 0.8;
+}
+
+.handle:hover {
+    opacity: 1.0;
+}
+
+.close-handle {
+    top: -24px;
+    right: -24px;
+    cursor: pointer;
+    background-image: url("../assets/close.svg");
+}
+
+.zoom-in-handle {
+    top: -24px;
+    left: 0px;
+    cursor: pointer;
+    background-image: url("../assets/zoom-in.svg");
+}
+
+.zoom-out-handle {
+    top: -24px;
+    left: 24px;
+    cursor: pointer;
+    background-image: url("../assets/zoom-out.svg");
+}
+
+.resize-handle {
+    bottom: -24px;
+    right: -24px;
+    cursor: nwse-resize;
+    background-image: url("../assets/resize.svg");
+}
+
+.document-window {
+    position: absolute;
+}
+
+.shared-document-view {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: white;
+    pointer-events: all;
+    position: absolute;
+    border: 2px solid #333333;
+}
+
+.shared-document-view img {
+    display: block;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0
+}
+
+.shared-document-error {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.document-frame {
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.document-frame canvas {
+    box-shadow: 10px 10px 5px #888888;
+    border: 1px solid #888888;
+    margin: 1em;
+}
+
+.zoom-indicator {
+    width: 4em;
+    top: -24px;
+    left: 48px;
+    padding: 0;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.input-location {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+}
+
+.non-interactive .move-handle {
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	border: none;
+	background: none;
+}
+
+.scrollbar {
+    position: absolute;
+    opacity: 0.5;
+    height:0;
+    right:0;
+    width:3%;
+    min-width:20px;
+    max-width:30px;
+    padding-top:30px;
+    background-repeat: no-repeat;
+    z-index: 100;
+}
+
+.scrollbar:hover {
+    opacity: 1.0;
+}
+
+.scrollbar.top {
+    top:0;
+    background-image: url(../assets/up-arrow.png);
+    background-size: contain;
+    background-position: top center;
+}
+
+.scrollbar.bottom {
+    bottom:0;
+    background-image: url(../assets/down-arrow.png);
+    background-size: contain;
+    background-position:bottom center;
+}
