@@ -6,7 +6,7 @@
             "name": "SMSBot",
             "type": "python",
             "request": "launch",
-            "stopOnEntry": true,
+            "stopOnEntry": "true",
             "pythonPath": "${config.python.pythonPath}",
             "program": "${file}",
             "cwd": "${workspaceRoot}",
