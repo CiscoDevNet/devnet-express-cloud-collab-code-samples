@@ -10,9 +10,11 @@
             "program": "${file}",
             "cwd": "${workspaceRoot}",
             "env": {
-                "SPARK_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
+                "SPARK_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE",
+                "SPARK_BOT_URL": "PASTE YOUR NGROK URL HERE",
+                "SPARK_SMS_USER": "PASTE YOUR SPARK SMS USER EMAIL HERE",
+                "TROPO_TOKEN": "PASTE YOUR TROPO SCRIPT TOKEN HERE"
             },
-            "envFile": "${workspaceRoot}/.env",
             "debugOptions": [
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit",

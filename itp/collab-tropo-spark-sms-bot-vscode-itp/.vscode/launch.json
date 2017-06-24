@@ -2,22 +2,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python",
+            "name": "SMSBot",
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
             "pythonPath": "${config:python.pythonPath}",
             "program": "${file}",
             "cwd": "${workspaceRoot}",
-            "env": {
-                "SPARK_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
-            },
-            "envFile": "${workspaceRoot}/.env",
             "debugOptions": [
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit",
                 "RedirectOutput"
-            ]
+            ],
+            "args": [],
+            "env": {
+                "SPARK_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE",
+                "BOT_URL": "PASTE YOUR BOT URL HERE",
+                "AUTHORIZED_USER": "PASTE YOUR AUTHORIZED USER HERE",
+                "TROPO_TOKEN": "PASTE YOUR TROPO TOKEN HERE"
+            }
         }
     ]
 }

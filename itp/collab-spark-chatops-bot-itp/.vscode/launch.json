@@ -5,8 +5,8 @@
             "name": "ChatOps",
             "type": "python",
             "request": "launch",
-            "stopOnEntry": "false",
-            "pythonPath": "${config.python.pythonPath}",
+            "stopOnEntry": false,
+            "pythonPath": "${config:python.pythonPath}",
             "program": "${file}",
             "cwd": "${workspaceRoot}",
             "debugOptions": [
@@ -21,7 +21,7 @@
                 "customize this chatops message"
             ],
             "env": {
-                "SPARK_ACCESS_TOKEN" : "PASTE YOUR BOT ACCESS TOKEN HERE"
+                "SPARK_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
             }
         }
     ]

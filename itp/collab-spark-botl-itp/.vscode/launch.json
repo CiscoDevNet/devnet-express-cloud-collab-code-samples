@@ -6,8 +6,8 @@
             "name": "ChatOps",
             "type": "python",
             "request": "launch",
-            "stopOnEntry": "false",
-            "pythonPath": "${config.python.pythonPath}",
+            "stopOnEntry": false,
+            "pythonPath": "${config:python.pythonPath}",
             "program": "${file}",
             "cwd": "${workspaceRoot}",
             "debugOptions": [
