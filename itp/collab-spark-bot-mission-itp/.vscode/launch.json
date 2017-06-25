@@ -2,17 +2,33 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python",
+            "name": "BanBot",
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
             "pythonPath": "${config:python.pythonPath}",
-            "program": "${file}",
+            "program": "${workspaceRoot}/banbot.py",
             "cwd": "${workspaceRoot}",
             "env": {
                 "SPARK_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
             },
-            "envFile": "${workspaceRoot}/.env",
+            "debugOptions": [
+                "WaitOnAbnormalExit",
+                "WaitOnNormalExit",
+                "RedirectOutput"
+            ]
+        },
+        {
+            "name": "Solution",
+            "type": "python",
+            "request": "launch",
+            "stopOnEntry": false,
+            "pythonPath": "${config:python.pythonPath}",
+            "program": "${workspaceRoot}/banbot_complete.py",
+            "cwd": "${workspaceRoot}",
+            "env": {
+                "SPARK_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
+            },
             "debugOptions": [
                 "WaitOnAbnormalExit",
                 "WaitOnNormalExit",
