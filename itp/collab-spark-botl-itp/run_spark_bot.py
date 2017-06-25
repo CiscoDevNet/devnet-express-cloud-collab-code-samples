@@ -92,9 +92,9 @@ def spark_webhook():
                                 {"roomId": webhook['data']['roomId'], "markdown": msg})
         return "true"
     elif request.method == 'GET':
-        message = "<center><img src=\"http://bit.ly/SparkBot-512x512\" alt=\"Spark Bot\" style=\"width:256; height:256;\"</center>" \
+        message = "<center><img src=\"https://cdn-images-1.medium.com/max/800/1*wrYQF1qZ3GePyrVn-Sp0UQ.png\" alt=\"Spark Bot\" style=\"width:256; height:256;\"</center>" \
                   "<center><h2><b>Congratulations! Your <i style=\"color:#ff8000;\">%s</i> bot is up and running.</b></h2></center>" \
-                  "<center><b><i>Please don't forget to create Webhooks to start receiving events from Cisco Spark!</i></b></center>" % bot_name
+                  "<center><b><i>Don't forget to create Webhooks to start receiving events from Cisco Spark!</i></b></center>" % bot_name
         return message
 
 def main():
@@ -102,7 +102,7 @@ def main():
     if len(bearer) != 0:
         test_auth = send_spark_get("https://api.ciscospark.com/v1/people/me", js=False)
         if test_auth.status_code == 401:
-            print("Looks like provided access toke is not correct. \n"
+            print("Looks like the provided access token is not correct.\n"
                   "Please review it and make sure it belongs to your bot account.\n"
                   "Do not worry if you have lost the access token. "
                   "You can always go to https://developer.ciscospark.com/apps.html "
@@ -121,11 +121,11 @@ def main():
         sys.exit()
 
     if "@sparkbot.io" not in bot_email:
-        print("You have provided access token which does not belong to your bot.\n"
-              "Please review it and make sure it belongs to your bot account.\n"
+        print("You have provided an access token which does not relate to a Bot Account.\n"
+              "Please change for a Bot Account access toekneview it and make sure it belongs to your bot account.\n"
               "Do not worry if you have lost the access token. "
               "You can always go to https://developer.ciscospark.com/apps.html "
-              "URL and generate a new access token.")
+              "URL and generate a new access token for your Bot.")
         sys.exit()
     else:
         app.run(host='localhost', port=8080)
