@@ -87,9 +87,14 @@ server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function ()
 
 
 // ChatOps function
-const ciscospark = require(`ciscospark`);
+var ciscospark = require("ciscospark");
 function chatops(message) {
-  ciscospark.messages.create({
+  var sparky = ciscospark.init({
+    credentials: {
+      access_token: process.env.CISCOSPARK_ACCESS_TOKEN
+    }
+  });
+  sparky.messages.create({
     markdown: message,
     roomId: "PASTE_YOUR_ROOM_IDENTIFIER"
   });
