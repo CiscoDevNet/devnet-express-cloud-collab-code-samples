@@ -10,7 +10,7 @@
             "name": "Launch Program",
             "program": "${workspaceRoot}\\populate.js",
             "env": {
-                "CISCOSPARK_ACCESS_TOKEN" : "PASTE_YOUR_TOKEN"
+                "SPARK_TOKEN" : "PASTE_YOUR_TOKEN"
             }  
         }
     ]

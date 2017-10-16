@@ -9,6 +9,7 @@
   "author": "Stève Sfartz",
   "license": "MIT",
   "dependencies": {
-    "csv-parse": "^1.2.4"
+    "ciscospark": "^0.7.93",
+    "csv-parse": "^1.2.0"
   }
 }

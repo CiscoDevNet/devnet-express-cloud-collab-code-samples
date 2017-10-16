@@ -60,6 +60,6 @@ parser.on('finish', function () {
 
 
 // Launcher parsing
-fs.createReadStream(__dirname + '/data.csv').pipe(parser);
+fs.createReadStream(__dirname + '../../data.csv').pipe(parser);
 
 
