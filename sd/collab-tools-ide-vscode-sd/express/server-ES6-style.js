@@ -1,16 +1,14 @@
 /**
- * Same script but leveraging ES6 features available in NodeJS v4: https://nodejs.org/en/blog/release/v4.0.0/
+ * Same script leveraging ES6 features:
  *    - arrow functions
  *    - string templates
- *  
  */
-
 const express = require('express')  
 const app = express()  
 
 app.get('/', (request, response) => {  
   "use strict"
-  let message = "Welcome to DevNet Express for Cloud Collaboration with Cisco Spark & Tropo APIs"
+  let message = "Welcome to DevNet Express for Cloud Collaboration with Cisco Spark"
   response.send(message)
 })
 

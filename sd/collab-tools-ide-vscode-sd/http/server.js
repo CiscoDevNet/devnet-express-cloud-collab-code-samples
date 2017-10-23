@@ -3,7 +3,7 @@ var http = require('http');
 
 
 var server = http.createServer(function (request, response) {  
-  var message = "Welcome to DevNet Express for Cloud Collaboration with Cisco Spark & Tropo APIs";
+  var message = "Welcome to DevNet Express for Cloud Collaboration with Cisco Spark";
   response.end(message);
 });
 

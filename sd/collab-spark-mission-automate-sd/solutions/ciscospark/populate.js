@@ -1,6 +1,6 @@
-const assert = require(`assert`);
+const assert = require('assert');
 assert(process.env.CISCOSPARK_ACCESS_TOKEN, "Cannot populate without a Cisco Spark API access token, aborting...");
-const ciscospark = require(`ciscospark`);
+const ciscospark = require('ciscospark');
 
 // Read CSV sample: https://github.com/wdavidw/node-csv-parse/blob/master/samples/fs_read.js
 var fs = require('fs');
@@ -61,5 +61,3 @@ parser.on('finish', function () {
 
 // Launcher parsing
 fs.createReadStream(__dirname + '../../data.csv').pipe(parser);
-
-

@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', function (request, response) {  
-  var message = "Welcome to DevNet Express for Cloud Collaboration with Cisco Spark & Tropo APIs";
+  var message = "Welcome to DevNet Express for Cloud Collaboration with Cisco Spark";
   response.send(message);
 });
 
