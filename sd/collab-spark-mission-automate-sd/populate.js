@@ -17,8 +17,8 @@ var parser = parse({ delimiter: ';', columns: true }, function (err, data) {
   data.forEach(function (elem, index) {
     if (elem.email) {
 
-      // Add a member to the room
-      console.log(`add member: ${elem.email} to room: ${roomToPopulate}`);
+      // TODO: Add each member to the room
+      console.log(`adding member: ${elem.email} to room: ${roomToPopulate}`);
     }
   });
 });
