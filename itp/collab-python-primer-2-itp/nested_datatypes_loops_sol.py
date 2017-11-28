@@ -4,7 +4,7 @@ for hungry in food["vegetables"]:
 for hungry in food["desserts"]:
 	print("My favorite dessert is " + hungry)
 
-cars={"sports":{"Volkswagon":"Porsche","Dodge":"Viper","Chevy":"Corvette"},"classic":{"Mercedes-Benz":"300SL","Toyota":"2000GT","Lincoln":"Continental"}}
+cars={"sports":{"Volkswagen":"Porsche","Dodge":"Viper","Chevy":"Corvette"},"classic":{"Mercedes-Benz":"300SL","Toyota":"2000GT","Lincoln":"Continental"}}
 for auto in cars["sports"]:
 	print("My favorite sports car is " + cars["sports"][auto])
 for auto in cars["classic"]:

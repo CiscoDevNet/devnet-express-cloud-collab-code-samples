@@ -12,7 +12,7 @@ for hungry in donut["flavors"]["flavor"]:
 print()
 
 
-cars={"sports":{"Porsche":"Volkswagon","Viper":"Dodge","Corvette":"Chevy"}}
+cars={"sports":{"Porsche":"Volkswagen","Viper":"Dodge","Corvette":"Chevy"}}
 #Parse JSON without loops
 print("Porsche  " + cars["sports"]["Porsche"])
 print("Viper  " + cars["sports"]["Viper"])

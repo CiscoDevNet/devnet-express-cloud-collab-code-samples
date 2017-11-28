@@ -9,12 +9,12 @@ print(strDes + food["desserts"][0])
 print(strDes + food["desserts"][1])
 print(strDes + food["desserts"][2])
 
-cars={"sports":{"Volkswagon":"Porsche","Dodge":"Viper","Chevy":"Corvette"},"classic":{"Mercedes-Benz":"300SL","Toyota":"2000GT","Lincoln":"Continental"}}
+cars={"sports":{"Volkswagen":"Porsche","Dodge":"Viper","Chevy":"Corvette"},"classic":{"Mercedes-Benz":"300SL","Toyota":"2000GT","Lincoln":"Continental"}}
 strSport = "My favorite sports car is a"
 strClassic = "My favorite classic car is a"
 print(strSport + " Dodge " + cars["sports"]["Dodge"])
 print(strSport + " Chevy " + cars["sports"]["Chevy"])
-print(strSport + " Volkswagon " + cars["sports"]["Volkswagon"])
+print(strSport + " Volkswagen " + cars["sports"]["Volkswagen"])
 print(strClassic + " Mercedes-Benz " + cars["classic"]["Mercedes-Benz"])
 print(strClassic + " Toyota " + cars["classic"]["Toyota"])
 print(strClassic + " Lincoln " + cars["classic"]["Lincoln"])
