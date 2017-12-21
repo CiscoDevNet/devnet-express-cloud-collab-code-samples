@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "collab-spark-chatops-bot-cloud9-sd"
+		},
+		{
+			"path": "collab-spark-mission-automate-sd"
+		},
+		{
+			"path": "collab-tools-ide-vscode-sd"
+		}
+	],
+	"settings": {}
+}
