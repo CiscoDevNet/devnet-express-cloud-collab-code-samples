@@ -1,9 +1,10 @@
-## Welcome to DevNet Express Cloud Collab Code Samples Repository
+# Code Samples for DevNet Express Cloud Collaboration tracks
 
 This repository holds code samples for these two DevNet Express tracks:
 
-* **IT-Pros** - folder is titled as `itp`
-* **Software Developers** - folder is titled as `sd`
+* [**IT-Pros**](https://learninglabs.cisco.com/tracks/devnet-express-cloud-collab-it-pro) - folder is titled as `itp`
+* [**Software Developers**](https://learninglabs.cisco.com/tracks/devnet-express-cloud-collab-soft-dev) - folder is titled as `sd`
+
 
 ## Guidance for Software Developers
 
