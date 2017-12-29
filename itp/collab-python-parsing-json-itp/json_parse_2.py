@@ -1,4 +1,4 @@
-var={"donut":{"flavors":["chocolate","jelley","maple","plain"]}}
+var={"donut":{"flavors":["chocolate","jelly","maple","plain"]}}
 print(var["donut"]["flavors"][0])
 print("My favorite donut flavors are:", end=" ")
 for f in var["donut"]["flavors"]:

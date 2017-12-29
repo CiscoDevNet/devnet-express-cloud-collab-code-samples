@@ -1,6 +1,6 @@
 
 # Classification Data	
-cars={"sportsCars":[{"Make":"Volkswagon","Model":"Porsche"},{"Make":"Dodge","Model":"Viper"},{"Make":"Chevy","Model":"Corvette"}]}
+cars={"sportsCars":[{"Make":"Volkswagen","Model":"Porsche"},{"Make":"Dodge","Model":"Viper"},{"Make":"Chevy","Model":"Corvette"}]}
 
 ### Write loop here to parse and print data
 
