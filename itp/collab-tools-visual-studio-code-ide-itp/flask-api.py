@@ -8,5 +8,5 @@ def hello():
 
 if __name__ == "__main__":
     import os
-    default = os.getenv('PORT', 5000)
+    default = int(os.getenv('PORT', 5000))
     app.run(port=default)
