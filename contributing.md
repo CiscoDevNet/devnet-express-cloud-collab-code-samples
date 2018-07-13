@@ -37,4 +37,4 @@ to validate that documented tasks work correctly. Additionally, the content
 should follow the [Learning Lab Style Guide](https://github.com/CiscoDevNet/devnet-writing-guidelines/wiki/Lab-Style-Guide).
 
 The [DevNet Writing Guidelines Wiki](https://github.com/CiscoDevNet/devnet-writing-guidelines/wiki)
-describes the review and publishing process in detail. Please feel free to request reviews from DevNet contributors you see in the repository and we will review submissions.
+describes the review and publishing process in detail. Please feel free to request reviews from DevNet contributors you see in the repository and we will review submissions.  
