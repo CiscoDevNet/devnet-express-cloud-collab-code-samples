@@ -1,6 +1,6 @@
-## Cisco DevNet Learning Labs: Collaboration Code Samples
+# Code Samples for DevNet Express Cloud Collaboration tracks
 
-These self-paced interactive tutorials provide instructions for developers to use collaboration tools.
+These self-paced interactive tutorials provide instructions for developers to read and use code examples.
 
 We write these labs for display within the [Cisco DevNet Learning Labs system](https://learninglabs.cisco.com).
 
@@ -12,8 +12,7 @@ The goal of these learning labs is to ensure a 'hands-on' learning approach rath
 
 ## About these Learning Labs
 
-These labs have code for various collaboration tools. No usual Learning Lab tasks.
-
+These labs teach how to see code examples and use them.
 
 If you need more help, you can reach out to DevNet through one of our [support options](https://developer.cisco.com/site/devnet/support/).
 
