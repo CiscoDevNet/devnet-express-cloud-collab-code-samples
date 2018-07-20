@@ -7,7 +7,7 @@ import getopt
 
 
 # Simple Bot Function for passing messages to a room
-def send(token, room_id, message):
+def send_it(token, room_id, message):
 
         header = {"Authorization": "Bearer %s" % token,
                   "Content-Type": "application/json"}
