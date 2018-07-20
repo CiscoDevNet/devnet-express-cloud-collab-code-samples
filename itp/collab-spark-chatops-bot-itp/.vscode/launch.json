@@ -2,12 +2,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "ChatOps",
+            "name": "Python",
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
             "pythonPath": "${config:python.pythonPath}",
-            "program": "${workspaceRoot}/chatops.py",
+            "program": "${file}",
             "cwd": "${workspaceRoot}",
             "debugOptions": [
                 "WaitOnAbnormalExit",
@@ -21,32 +21,8 @@
                 "customize this chatops message"
             ],
             "env": {
-                "SPARK_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
-            }
-        },
-        {
-            "name": "ciscosparkapi",
-            "type": "python",
-            "request": "launch",
-            "stopOnEntry": false,
-            "pythonPath": "${config:python.pythonPath}",
-            "program": "${workspaceRoot}/ciscosparkapi.py",
-            "cwd": "${workspaceRoot}",
-            "debugOptions": [
-                "WaitOnAbnormalExit",
-                "WaitOnNormalExit",
-                "RedirectOutput"
-            ],
-            "args": [
-                "-r",
-                "PASTE THE IDENTIFIER OF THE ROOM YOU ADDED YOUR BOT TO",
-                "-m",
-                "customize this chatops message"
-            ],
-            "env": {
-                "SPARK_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
+                "TEAMS_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
             }
         }
- 
     ]
 }
