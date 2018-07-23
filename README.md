@@ -1,4 +1,4 @@
-# Code Samples for DevNet Express Cloud Collaboration tracks
+# Code Samples For DevNet Express Cloud Collaboration Tracks
 
 This repository holds code samples for these two DevNet Express tracks:
 
@@ -10,4 +10,4 @@ This repository holds code samples for these two DevNet Express tracks:
 
 To open the workspace, simply go to the `sd` directory and type `code soft-devs.code-workspace`.
 
-By doing so, VSCode will load the debug options for each folder when entering debug mode (F5) without the need for you to open each folder individually with the `code .` command
+By doing so, VSCode will load the debug options for each folder when entering debug mode (F5) without the need for you to open each folder individually with the `code .` command.
