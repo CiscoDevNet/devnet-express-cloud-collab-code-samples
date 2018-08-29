@@ -1,8 +1,8 @@
 const assert = require('assert');
-assert(process.env.SPARK_TOKEN, "Cannot populate without a Cisco Spark API access token, aborting...");
+assert(process.env.ACCESS_TOKEN, "Cannot populate without a Webex Teams API access token, aborting...");
 
-var SparkClient = require("node-sparky");
-var spark = new SparkClient({ token: process.env.SPARK_TOKEN });
+var WebexTeamsClient = require("node-sparky");
+var sparky = new WebexTeamsClient({ token: process.env.ACCESS_TOKEN });
 
 // Read CSV sample: https://github.com/wdavidw/node-csv-parse/blob/master/samples/fs_read.js
 var fs = require('fs');
@@ -15,11 +15,12 @@ var parser = parse({ delimiter: ';', columns: true }, function (err, data) {
   }
 
   // Append participants to the room
+  // [TODO] Create a space and place the identifier below
   var roomToPopulate = "PASTE_YOUR_ROOMID";
   data.forEach(function (elem, index) {
     if (elem.email) {
 
-      spark.membershipAdd(roomToPopulate, elem.email, false)
+      sparky.membershipAdd(roomToPopulate, elem.email, false)
         .then(function(membership) {
           console.log(`successfully added ${elem.email}`);
         })
