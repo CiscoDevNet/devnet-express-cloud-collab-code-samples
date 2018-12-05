@@ -13,15 +13,14 @@ except ImportError as e:
     sys.exit()
 
 
-bearer = os.environ.get("SPARK_ACCESS_TOKEN") # BOT'S ACCESS TOKEN
+bearer = os.environ.get("TEAMS_ACCESS_TOKEN") # BOT'S ACCESS TOKEN
 headers = {
     "Accept": "application/json",
     "Content-Type": "application/json; charset=utf-8",
     "Authorization": "Bearer " + bearer
 }
 
-
-def send_spark_get(url, payload=None,js=True):
+def send_get(url, payload=None,js=True):
 
     if payload == None:
         request = requests.get(url, headers=headers)
@@ -32,7 +31,7 @@ def send_spark_get(url, payload=None,js=True):
     return request
 
 
-def send_spark_post(url, data):
+def send_post(url, data):
 
     request = requests.post(url, json.dumps(data), headers=headers).json()
     return request
@@ -52,16 +51,15 @@ def greetings():
            "Type `Help me` to see what I can do.<br/>" % bot_name
 
 
-
 app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
-def spark_webhook():
+def teams_webhook():
     if request.method == 'POST':
         webhook = request.get_json(silent=True)
         if webhook['data']['personEmail']!= bot_email:
             pprint(webhook)
         if webhook['resource'] == "memberships" and webhook['data']['personEmail'] == bot_email:
-            send_spark_post("https://api.ciscospark.com/v1/messages",
+            send_post("https://api.ciscospark.com/v1/messages",
                             {
                                 "roomId": webhook['data']['roomId'],
                                 "markdown": (greetings() +
@@ -70,8 +68,8 @@ def spark_webhook():
                             }
                             )
         msg = None
-        if "@sparkbot.io" not in webhook['data']['personEmail']:
-            result = send_spark_get(
+        if "@webex.bot" not in webhook['data']['personEmail']:
+            result = send_get(
                 'https://api.ciscospark.com/v1/messages/{0}'.format(webhook['data']['id']))
             in_message = result.get('text', '').lower()
             in_message = in_message.replace(bot_name.lower() + " ", '')
@@ -88,25 +86,25 @@ def spark_webhook():
             else:
                 msg = "Sorry, but I did not understand your request. Type `Help me` to see what I can do"
             if msg != None:
-                send_spark_post("https://api.ciscospark.com/v1/messages",
+                send_post("https://api.ciscospark.com/v1/messages",
                                 {"roomId": webhook['data']['roomId'], "markdown": msg})
         return "true"
     elif request.method == 'GET':
-        message = "<center><img src=\"https://cdn-images-1.medium.com/max/800/1*wrYQF1qZ3GePyrVn-Sp0UQ.png\" alt=\"Spark Bot\" style=\"width:256; height:256;\"</center>" \
+        message = "<center><img src=\"https://cdn-images-1.medium.com/max/800/1*wrYQF1qZ3GePyrVn-Sp0UQ.png\" alt=\"Webex Teams Bot\" style=\"width:256; height:256;\"</center>" \
                   "<center><h2><b>Congratulations! Your <i style=\"color:#ff8000;\">%s</i> bot is up and running.</b></h2></center>" \
-                  "<center><b><i>Don't forget to create Webhooks to start receiving events from Cisco Spark!</i></b></center>" % bot_name
+                  "<center><b><i>Don't forget to create Webhooks to start receiving events from Webex Teams!</i></b></center>" % bot_name
         return message
 
 def main():
     global bot_email, bot_name
     if len(bearer) != 0:
-        test_auth = send_spark_get("https://api.ciscospark.com/v1/people/me", js=False)
+        test_auth = send_get("https://api.ciscospark.com/v1/people/me", js=False)
         if test_auth.status_code == 401:
             print("Looks like the provided access token is not correct.\n"
                   "Please review it and make sure it belongs to your bot account.\n"
                   "Do not worry if you have lost the access token. "
-                  "You can always go to https://developer.ciscospark.com/apps.html "
-                  "URL and generate a new access token.")
+                  "You can always go to https://developer.webex.com/my-apps "
+                  "and generate a new access token.")
             sys.exit()
         if test_auth.status_code == 200:
             test_auth = test_auth.json()
@@ -116,16 +114,16 @@ def main():
         print("'bearer' variable is empty! \n"
               "Please populate it with bot's access token and run the script again.\n"
               "Do not worry if you have lost the access token. "
-              "You can always go to https://developer.ciscospark.com/apps.html "
-              "URL and generate a new access token.")
+              "You can always go to https://developer.webex.com/my-apps "
+              "and generate a new access token.")
         sys.exit()
 
-    if "@sparkbot.io" not in bot_email:
+    if "@webex.bot" not in bot_email:
         print("You have provided an access token which does not relate to a Bot Account.\n"
-              "Please change for a Bot Account access toekneview it and make sure it belongs to your bot account.\n"
+              "Please change for a Bot Account access token, view it and make sure it belongs to your bot account.\n"
               "Do not worry if you have lost the access token. "
-              "You can always go to https://developer.ciscospark.com/apps.html "
-              "URL and generate a new access token for your Bot.")
+              "You can always go to https://developer.webex.com/my-apps "
+              "and generate a new access token for your Bot.")
         sys.exit()
     else:
         app.run(host='localhost', port=8080)
