@@ -7,22 +7,22 @@ import os
 
 baseurl = "https://api.ciscospark.com/v1"
 
-bot_auth_token = os.environ.get("SPARK_ACCESS_TOKEN")
+bot_auth_token = os.environ.get("WEBEX_TEAMS_ACCESS_TOKEN")
 
 if (bot_auth_token == '' or 
     bot_auth_token == "PASTE YOUR BOT ACCESS TOKEN HERE"):
-    print("SPARK_ACCESS_TOKEN not found in environment variables")
+    print("WEBEX_TEAMS_ACCESS_TOKEN not found in environment variables")
     exit()
 headers = {"Content-Type": "application/json",
            "Accept": "application/json",
            "Authorization": "Bearer %s" % bot_auth_token
            }
 me_resp = requests.get(baseurl + '/people/me', headers=headers)
-# Check that the Spark access token belongs to a bot
+
 if json.loads(me_resp.text)['type'] != 'bot':
-    print('SPARK_ACCESS_TOKEN does not belong to a bot...exiting')
+    print('WEBEX_TEAMS_ACCESS_TOKEN does not belong to a bot...exiting')
     exit()
-bot_id = json.loads(me_resp.text)['id']  # Retrieve / extract the bot's user ID
+bot_id = json.loads(me_resp.text)['id']
 app = Flask(__name__)
 
 
@@ -31,8 +31,10 @@ def get_message(data):
     mess_api = "/messages/%s" % mess_id
     mess_url = baseurl + mess_api
     mess_resp = requests.get(mess_url, headers=headers)
-    mess_content = json.loads(mess_resp.text)['text']
+    mess_content = mess_resp.text['text']
+    # BUG: mmess_resp.text is not a dictionary or key:value pair you can call a key on... yet
     mess_room = json.loads(mess_resp.text)['roomId']
+    # BUG: same thing here as the variable above
     return mess_room, mess_content
 
 
@@ -51,9 +53,11 @@ def send_message(room, text):
 def get_membership(room, email):
     get_mem_api = "/memberships"
     get_mem_param = {"roomId": room,
-                     "personEmail": email
+                     "personEmail": YourEmail
                      }
-    get_mem_url = baseurl + get_mem_api
+    # BUG: make sure the correct variables names are referenced in this function
+    get_mem_url = baseurl
+    # BUG: the API URL is incomplete...need to append something
     get_mem_resp = requests.get(get_mem_url,
                                 params=get_mem_param,
                                 headers=headers)
@@ -66,18 +70,18 @@ def get_membership(room, email):
     return get_mem_id
 
 
-def rock_ban(mem_id):
+def ban_user(mem_id):
     del_mem_api = "/memberships/%s" % mem_id
     ban_url = baseurl + del_mem_api
-    ban_resp = requests.delete(ban_url, headers=headers)
+    ban_resp = requests.post(ban_url, headers=headers)
+    # requests.post will create a membership...not what we want here
     return ban_resp
 
 
 @app.route('/ban/this/guy', methods=['POST'])
 def ban_hook():
-    spark_hook = request.json
-    hook_data = spark_hook["data"]
-    # Make sure this isn't a message previously posted by this bot's id
+    teams_hook = request.json
+    hook_data = teams_hook["data"]
     if hook_data["personId"] == bot_id:
         return "OK"
     mess_room, mess_content = get_message(hook_data)
@@ -94,7 +98,7 @@ def ban_hook():
                                 ",  and I have to be the moderator :-)")
             print(send)
         else:
-            banned_for_life = rock_ban(mem_id)
+            banned_for_life = ban_user(mem_id)
             if banned_for_life.status_code == 204:
                 print("We banned that jerk %s" % mess_list[2])
             else:
