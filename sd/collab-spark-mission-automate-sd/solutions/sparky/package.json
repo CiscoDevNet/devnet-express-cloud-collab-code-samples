@@ -9,7 +9,7 @@
   "author": "Stève Sfartz",
   "license": "MIT",
   "dependencies": {
-    "csv-parse": "^3.0.0",
+    "csv-parse": "^4.4.6",
     "node-sparky": "^4.6.0"
   }
 }
