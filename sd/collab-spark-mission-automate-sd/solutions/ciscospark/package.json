@@ -10,6 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "ciscospark": "^1.12.3",
-    "csv-parse": "^2.0.0"
+    "csv-parse": "^4.8.9"
   }
 }
