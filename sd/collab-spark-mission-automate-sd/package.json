@@ -9,6 +9,6 @@
   "author": "Stève Sfartz",
   "license": "MIT",
   "dependencies": {
-    "csv-parse": "^2.0.0"
+    "csv-parse": "^4.8.9"
   }
 }
