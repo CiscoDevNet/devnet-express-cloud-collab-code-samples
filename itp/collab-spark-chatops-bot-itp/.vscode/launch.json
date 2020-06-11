@@ -6,14 +6,8 @@
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
-            "pythonPath": "${config:python.pythonPath}",
             "program": "${file}",
             "cwd": "${workspaceRoot}",
-            "debugOptions": [
-                "WaitOnAbnormalExit",
-                "WaitOnNormalExit",
-                "RedirectOutput"
-            ],
             "args": [
                 "-r",
                 "PASTE THE IDENTIFIER OF THE ROOM YOU ADDED YOUR BOT TO",

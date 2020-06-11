@@ -1,0 +1,9 @@
+certifi==2020.4.5.2
+chardet==3.0.4
+future==0.18.2
+idna==2.9
+PyJWT==1.7.1
+requests==2.23.0
+requests-toolbelt==0.9.1
+urllib3==1.25.9
+webexteamssdk==1.3

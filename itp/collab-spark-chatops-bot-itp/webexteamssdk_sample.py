@@ -1,16 +1,15 @@
-import requests
 import json
 import datetime as dt
 import sys
 import os
 import getopt
-
+from webexteamssdk import WebexTeamsAPI
 
 if __name__ == '__main__':
 
         # Command line arguments parsing    
         from argparse import ArgumentParser  
-        parser = ArgumentParser("ciscospark.py")  
+        parser = ArgumentParser("webexteamssdk_sample.py")  
         parser.add_argument("-m", "--message", help="the chatops message to post to Webex Teams", required=True)
         parser.add_argument("-r", "--room_id", help="the identifier of the room you added your bot to", required=True)
         parser.add_argument("-t", "--token", help="[optional] your bot's access token. Alternatively, you can use the TEAMS_ACCESS_TOKEN env variable", required=False)
@@ -31,12 +30,11 @@ if __name__ == '__main__':
             sys.exit(2)
 
         # Now let's post our message to Webex Teams
-        from ciscosparkapi import CiscoSparkAPI, SparkApiError
         try:
-                api = CiscoSparkAPI(access_token=token)  
+                api = WebexTeamsAPI(access_token=token)  
                 api.messages.create(roomId = teams_room, text= str(dt.datetime.now()) + "\n" + message)
                 print("your message was successfully posted to Webex Teams")
-        except SparkApiError as e:
+        except Exception as e:
                 print("failed with statusCode: %d" % e.response_code)
                 if e.response_code == 404:
                         print ("please check the bot is in the room you're attempting to post to...")
