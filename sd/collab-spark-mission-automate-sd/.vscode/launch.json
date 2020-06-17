@@ -10,7 +10,7 @@
             "name": "Launch Program",
             "program": "${file}",
             "env": {
-                "SPARK_TOKEN" : "PASTE_YOUR_TOKEN"
+                "WEBEX_ACCESS_TOKEN" : "YOUR_TOKEN_HERE"
             }  
         }
     ]
