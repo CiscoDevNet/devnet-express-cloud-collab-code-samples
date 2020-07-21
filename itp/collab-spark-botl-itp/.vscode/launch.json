@@ -2,12 +2,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "SparkBot",
+            "name": "WebexTeamsBot",
             "type": "python",
             "request": "launch",
             "stopOnEntry": false,
             "pythonPath": "${config:python.pythonPath}",
-            "program": "${workspaceRoot}/run_spark_bot.py",
+            "program": "${workspaceRoot}/run_bot.py",
             "cwd": "${workspaceRoot}",
             "debugOptions": [
                 "WaitOnAbnormalExit",
@@ -16,7 +16,7 @@
             ],
             "args": [],
             "env": {
-                "SPARK_ACCESS_TOKEN": "YOUR_BOT_ACCESS_TOKEN"
+                "TEAMS_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
             }
         }
     ]

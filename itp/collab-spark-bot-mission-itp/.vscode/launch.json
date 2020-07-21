@@ -10,7 +10,7 @@
             "program": "${workspaceRoot}/banbot.py",
             "cwd": "${workspaceRoot}",
             "env": {
-                "SPARK_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
+                "WEBEX_TEAMS_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
             },
             "debugOptions": [
                 "WaitOnAbnormalExit",
@@ -27,7 +27,7 @@
             "program": "${workspaceRoot}/banbot_complete.py",
             "cwd": "${workspaceRoot}",
             "env": {
-                "SPARK_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
+                "WEBEX_TEAMS_ACCESS_TOKEN": "PASTE YOUR BOT ACCESS TOKEN HERE"
             },
             "debugOptions": [
                 "WaitOnAbnormalExit",
