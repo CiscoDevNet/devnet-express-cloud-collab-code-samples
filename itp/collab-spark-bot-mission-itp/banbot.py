@@ -32,8 +32,8 @@ def get_message(data):
     mess_url = baseurl + mess_api
     mess_resp = requests.get(mess_url, headers=headers)
     mess_content = mess_resp.text['text']
-    # BUG: mmess_resp.text is not a dictionary or key:value pair you can call a key on... yet
-    mess_room = json.loads(mess_resp.text)['roomId']
+    # BUG: mess_resp.text is not a dictionary or key:value pair you can call a key on... yet
+    mess_room = mess_resp.text['roomId']
     # BUG: same thing here as the variable above
     return mess_room, mess_content
 
