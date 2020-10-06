@@ -3,13 +3,10 @@
   "version": "1.0.0",
   "description": "Populate a Cisco Webex Teams room from a CSV file",
   "main": "solution.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Stève Sfartz",
   "license": "MIT",
   "dependencies": {
-    "csv-parse": "^4.10.1",
-    "webex": "^1.80.257"
+    "csv-parse": "^4.12.0",
+    "webex": "^1.97.3"
   }
 }

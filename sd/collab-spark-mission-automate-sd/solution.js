@@ -10,63 +10,52 @@ const webex = webexSdk.init({
     }
 });
 
-// Read CSV sample: https://github.com/wdavidw/node-csv-parse/blob/master/samples/fs_read.js
+// Read CSV sample: https://csv.js.org/parse/recipies/file_interaction/
 const fs = require('fs');
 const path = require('path');
-const parse = require('csv-parse');
+const parse = require('csv-parse/lib/sync');
 
-const parser = parse({ delimiter: ';', columns: true }, function (err, data) {
-    if (err) {
-        console.log('Sorry, coud not read CSV data, aborting...');
-        process.exit(1);
+var records;
+
+try {
+    const csvData = fs.readFileSync(path.join(__dirname, 'data.csv'));
+    records = parse(csvData, { delimiter: ';', columns: true });
+}
+catch (err) {
+    console.log(`Error reading/parsing .csv file: ${err}`);
+    process.exit(1);
+}
+
+const roomToPopulate = process.env.WEBEX_ROOM_ID;
+
+records.forEach((record, index) => {
+    if (record.email) {
+
+        webex.memberships.create({
+            roomId: roomToPopulate,
+            personEmail: record.email
+        })
+            .then((result) => console.log(`successfully added: ${record.email}`))
+            .catch((reason) => {
+                switch (reason.message) {
+                    case 'not authenticated':
+                        console.log('Token not found, aborting...');
+                        process.exit(1);
+                    case 'Authorization cannot be refreshed':
+                        console.log('Bad token, aborting...');
+                        process.exit(1);
+                    default:
+                        if (reason.statusCode == 400) {
+                            console.log('Incorrect room identifier, aborting...');
+                            process.exit(1);
+                        } else if (reason.statusCode == 409) {
+                            console.log(`already member of room: ${record.email}`);
+                        } else {
+                            console.log(`Uncaught exception: ${reason}`);
+                        }
+                        break;
+                }
+            });
     }
-
-    // Append participants to the room
-    // [TODO] Create a space and place the identifier below
-    const roomToPopulate = process.env.WEBEX_ROOM_ID;
-    data.forEach(function (elem, index) {
-        if (elem.email) {
-
-            webex.memberships.create({
-                roomId: roomToPopulate,
-                personEmail: elem.email
-            })
-                .catch(function (reason) {
-                    switch (reason.message) {
-                        case 'not authenticated':
-                            console.log('Token not found, aborting...');
-                            process.exit(1);
-                        case 'Authorization cannot be refreshed':
-                            console.log('Bad token, aborting...');
-                            process.exit(1);
-                        default:
-                            if (reason.statusCode == 400) {
-                                console.log('Incorrect room identifier, aborting...');
-                                process.exit(1);
-                            } else if (reason.statusCode == 409) {
-                                console.log(`already member of room: ${elem.email}`);
-                            } else {
-                                console.log(`Uncaught exception: ${reason}`);
-                            }
-                            break;
-                    }
-                })
-                .then(function (result) {
-                    if (result) {
-                        console.log(`successfully added: ${elem.email}`)
-                    }
-                });
-        }
-    });
 });
 
-parser.on('error', function (err) {
-    console.log(err.message);
-});
-
-parser.on('finish', function () {
-    console.log('successfully parsed CSV file, continuing...');
-});
-
-// Launcher parsing
-fs.createReadStream(path.join(__dirname, 'data.csv')).pipe(parser);

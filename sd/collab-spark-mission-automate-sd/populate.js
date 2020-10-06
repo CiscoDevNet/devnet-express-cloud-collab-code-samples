@@ -3,37 +3,29 @@ assert(process.env.WEBEX_ACCESS_TOKEN, 'Cannot populate without a Cisco Spark AP
 
 // TODO: create/init a Webex Node SDK object
 
-// Read CSV sample: https://github.com/wdavidw/node-csv-parse/blob/master/samples/fs_read.js
+// Read CSV sample: https://csv.js.org/parse/recipies/file_interaction/
 const fs = require('fs');
 const path = require('path');
-const parse = require('csv-parse');
+const parse = require('csv-parse/lib/sync');
 
-const parser = parse({ delimiter: ';', columns: true }, function (err, data) {
-    if (err) {
-        console.log('Sorry, coud not read CSV data, aborting...');
-        process.exit(1);
-    }
+var records;
 
-    // Append participants to the room
-    // Be sure to update launch.json with the target group space roomId
-    const roomToPopulate = process.env.WEBEX_ROOM_ID;
-    data.forEach(function (elem, index) {
-        if (elem.email) {
+try {
+    const csvData = fs.readFileSync(path.join(__dirname, 'data.csv'));
+    records = parse(csvData, { delimiter: ';', columns: true });
+}
+catch (err) {
+    console.log(`Error reading/parsing .csv file: ${err}`);
+    process.exit(1);
+}
+
+const roomToPopulate = process.env.WEBEX_ROOM_ID;
+
+records.forEach((record, index) => {
+    if (record.email) {
 
         // TODO: create a membership for each email
-        // TODO: add error handling
-        console.log(`successfully added: ${elem.email}`)
-        }
-    });
+        // TODO: handle errors for authentication problems, incorrect room Id,
+        // and membership already exists scenarios
+    }
 });
-
-parser.on('error', function (err) {
-    console.log(err.message);
-});
-
-parser.on('finish', function () {
-    console.log('successfully parsed CSV file, continuing...');
-});
-
-// Launcher parsing
-fs.createReadStream(path.join(__dirname, 'data.csv')).pipe(parser);

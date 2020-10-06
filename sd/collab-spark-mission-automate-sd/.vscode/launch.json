@@ -10,8 +10,8 @@
             "name": "Launch Program",
             "program": "${file}",
             "env": {
-                "WEBEX_ACCESS_TOKEN" : "YOUR_TOKEN_HERE",
-                "WEBEX_ROOM_ID": "YOUR_ROOMID_HERE"
+                "WEBEX_ACCESS_TOKEN" : "changeme",
+                "WEBEX_ROOM_ID": "changeme"
             }  
         }
     ]
