@@ -10,4 +10,4 @@ api = WebexTeamsAPI(access_token="PASTE_YOUR_ACCESS_TOKEN_HERE")
 room = api.rooms.create("Challenge Room")
 
 # Send message to specified room with markdown syntax.
-send_msg = api.messages.create(roomId=room.id, markdown=msg)
+send_msg = api.messages.create(room.id, markdown=msg)
